@@ -1,0 +1,23 @@
+CREATE DATABASE previdencia_novo;
+GO
+
+USE previdencia_novo;
+
+CREATE TABLE clientes (
+    id INT PRIMARY KEY,
+    nome VARCHAR(100),
+    cpf VARCHAR(14),
+    data_cadastro DATE
+);
+
+CREATE TABLE contribuicoes (
+    id INT PRIMARY KEY,
+    cliente_id INT,
+    valor DECIMAL(10,2),
+    data_contribuicao DATE
+);
+
+ALTER TABLE contribuicoes
+ADD CONSTRAINT fk_cliente
+FOREIGN KEY (cliente_id)
+REFERENCES clientes(id);
